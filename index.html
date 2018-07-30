@@ -33,7 +33,7 @@
                     return `You lose! ${compSelect} beats ${playSelect}.`;
                 }
             case 115:
-            if (comp === 112) {
+                if (comp === 112) {
                     return `You win! ${playSelect} beats ${compSelect}.`;
                 } else {
                     return `You lose! ${compSelect} beats ${playSelect}.`;
@@ -51,8 +51,8 @@
             var playSelect = prompt("Enter rock, paper, or scissors for this round.");
 
             if (playSelect !== 'rock' &&
-            playSelect !== 'paper' &&
-            playSelect !== 'scissors') {
+                playSelect !== 'paper' &&
+                playSelect !== 'scissors') {
                 alert("Please make sure you type your selection correctly!");
                 continue;
             }
