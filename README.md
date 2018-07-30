@@ -1,0 +1,1 @@
+This project is meant to demonstrate an understanding of Javascript's functionality in a web setting. All outputs are displayed in the browser's developer pane, under "Console".

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<script>
+    function computerPlay() {
+        var select = Math.random();
+        if (select < .33) {
+            return "rock";
+        } else if (select >= .33 && select < .66) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    }
+
+    function playRound(playSelect, compSelect) {
+        var comp = compSelect.charCodeAt(0);
+        var play = playSelect.charCodeAt(0);
+
+        if (comp === play) {
+            return `It's a tie! ${playSelect} matches ${compSelect}.`;
+        }
+
+        switch (play) {
+            case 112:
+                if (comp === 114) {
+                    return `You win! ${playSelect} beats ${compSelect}.`;
+                } else {
+                    return `You lose! ${compSelect} beats ${playSelect}.`;
+                }
+            case 114:
+                if (comp === 115) {
+                    return `You win! ${playSelect} beats ${compSelect}.`;
+                } else {
+                    return `You lose! ${compSelect} beats ${playSelect}.`;
+                }
+            case 115:
+            if (comp === 112) {
+                    return `You win! ${playSelect} beats ${compSelect}.`;
+                } else {
+                    return `You lose! ${compSelect} beats ${playSelect}.`;
+                }
+        }
+    }
+
+    function game() {
+
+        var playTally = 0;
+        var compTally = 0;
+        var i = 0;
+
+        do {
+            var playSelect = prompt("Enter rock, paper, or scissors for this round.");
+
+            if (playSelect !== 'rock' &&
+            playSelect !== 'paper' &&
+            playSelect !== 'scissors') {
+                alert("Please make sure you type your selection correctly!");
+                continue;
+            }
+
+            var compTurn = computerPlay();
+            var result = playRound(playSelect, compTurn);
+            console.log(result);
+
+            if (result.charAt(4) === 'w') {
+                playTally++;
+            } else if (result.charAt(4) === 'l') {
+                compTally++;
+            } else {
+                i--;
+            }
+
+            i++;
+        } while (i < 5);
+
+        if (playTally > compTally) {
+            return `Congrats! You won the match, ${playTally} to ${compTally}.`;
+        } else {
+            return `Oh no! You lost the match, ${playTally} to ${compTally}.`;
+        }
+    }
+
+    console.log(game());
+</script>>
