@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <button id="rock" type="button">Rock</button>
+    <button id="paper" type="button">Paper</button>
+    <button id="scissors" type="button">Scissors</button>
+    <div class="result">Select a move to begin!</div>
+    <div class="tally"></div>
+</body>
+<script>
+    function computerPlay() {
+        var select = Math.random();
+        if (select < .33) {
+            return "rock";
+        } else if (select >= .33 && select < .66) {
+            return "paper";
+        } else {
+            return "scissors";
+        }
+    }
+
+    function winner(you, comp) {
+        outcome.textContent = `You win! ${you} beats ${comp}.`;
+        playerScore++;
+    }
+
+    function loser(you, comp) {
+        outcome.textContent = `You lose! ${comp} beats ${you}.`;
+        compScore++;
+    }
+
+    function tie(you) {
+        outcome.textContent = `It's a tie! ${you} matches ${you}.`;
+    }
+
+    function playRound(e) {
+        var rand = computerPlay();
+        var comp = rand.charCodeAt(0);
+        var play = this.id.charCodeAt(0);
+
+        if (comp === play) {
+            tie(this.id);
+            return;
+        }
+
+        switch (play) {
+            case 112:
+                if (comp === 114) {
+                    winner(this.id, rand);
+                    break;
+                } else {
+                    loser(this.id, rand);
+                    break;
+                }
+            case 114:
+                if (comp === 115) {
+                    winner(this.id, rand);
+                    break;
+                } else {
+                    loser(this.id, rand);
+                    break;
+                }
+            case 115:
+                if (comp === 112) {
+                    winner(this.id, rand);
+                    break;
+                } else {
+                    loser(this.id, rand);
+                    break;
+                }
+        }
+
+        score.textContent = `You: ${playerScore}    Comp: ${compScore}`;
+
+        if (playerScore + compScore === 5) {
+            if (playerScore > compScore) {
+                outcome.textContent = "Congradulations! You win the game!";
+            } else {
+                outcome.textContent = "Oh no! Better luck next time!";
+            }
+
+            playerScore = 0;
+            compScore = 0;
+        }
+    }
+
+    var playerScore = 0;
+    var compScore = 0;
+
+    const outcome = document.querySelector('.result');
+    const score = document.querySelector('.tally');
+
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => button.addEventListener('click', playRound));
+</script>
+
+</html>

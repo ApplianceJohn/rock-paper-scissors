@@ -1,0 +1,16 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // This config file is used in VS Code to enable debugging via attachment to an
+    // existing instance of Chrome.
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "attach",
+            "name": "Attach to Chrome",
+            "port": 9222,
+            "url": "file:///Users/jolenediamond/the_odin_project/rock-paper-scissors/ui.html",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
